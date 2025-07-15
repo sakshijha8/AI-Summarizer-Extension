@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "AI Summary Tool",
+  "version": "1.0",
+  "description": "Right-click to summarize selected text using AI.",
+  "permissions": [
+    "scripting",
+    "activeTab",
+    "declarativeContent",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/watch*",
+        "*://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "*://*/*"
+  ],
+  "options_page": "options.html"
+}
